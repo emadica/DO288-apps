@@ -1,3 +1,3 @@
 <?php
-    print "This app returns a random funny quote.\n"
+  print "Message (" . $_ENV['HELLO_MESSAGE'] . ")" . "\n";
 ?>
