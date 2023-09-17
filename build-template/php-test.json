@@ -430,7 +430,7 @@
         {
             "name": "HELLO_MESSAGE",
             "displayName": "Hello message",
-            "value": "Halo!!",
+            "value": "Halo!!"
         }
     ],
     "labels": {
