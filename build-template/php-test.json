@@ -190,6 +190,11 @@
                                         "value": "${DATABASE_NAME}"
                                     },
                                     {
+                                        "name": "HELLO_MESSAGE",
+                                        "value": "${HELLO_MESSAGE}"
+                                    },
+
+                                    {
                                         "name": "DATABASE_USER",
                                         "valueFrom": {
                                             "secretKeyRef": {
@@ -432,8 +437,5 @@
             "displayName": "Hello message",
             "value": "Halo!!"
         }
-    ],
-    "labels": {
-        "template": "php-mysql-ephemeral"
-    }
+    ]
 }
