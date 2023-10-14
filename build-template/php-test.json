@@ -2,10 +2,11 @@
     "kind": "Template",
     "apiVersion": "template.openshift.io/v1",
     "labels": {
-        "template": "php-test"
+        "template": ""
     },
     "metadata": {
         "name": "php-mysql-ephemeral",
+	"namespace": "openshift",
         "annotations": {
             "description": "A  PHP application with a MySQL database.\nWARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.",
             "iconClass": "icon-php",
@@ -126,7 +127,7 @@
                     "sourceStrategy": {
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "php:7.4-ubi8",
+                            "name": "",
                             "namespace": "${NAMESPACE}"
                         }
                     },
@@ -189,11 +190,6 @@
                                         "name": "DATABASE_NAME",
                                         "value": "${DATABASE_NAME}"
                                     },
-                                    {
-                                        "name": "HELLO_MESSAGE",
-                                        "value": "${HELLO_MESSAGE}"
-                                    },
-
                                     {
                                         "name": "DATABASE_USER",
                                         "valueFrom": {
@@ -316,7 +312,7 @@
                                         "value": "${DATABASE_NAME}"
                                     }
                                 ],
-                                "image": "image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el8",
+                                "image": "", 
                                 "livenessProbe": {
                                     "initialDelaySeconds": 30,
                                     "tcpSocket": {
@@ -380,20 +376,17 @@
             "name": "SOURCE_REPOSITORY_URL",
             "displayName": "Git Repository URL",
             "description": "The URL of the repository with your application source code.",
-            "required": true,
-            "value": "https://github.com/emadica/DO288-apps"
+            "required": true
         },
         {
             "name": "SOURCE_REPOSITORY_REF",
             "displayName": "Git Reference",
-            "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch.",
-            "value": "test-template"
+            "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch."
         },
         {
             "name": "CONTEXT_DIR",
             "displayName": "Context Directory",
-            "description": "Set this to the relative path to your project if it is not in the root of your repository.",
-            "value": "quotes"
+            "description": "Set this to the relative path to your project if it is not in the root of your repository."
         },
         {
             "name": "APPLICATION_DOMAIN",
@@ -431,11 +424,6 @@
             "displayName": "Database Password",
             "generate": "expression",
             "from": "[a-zA-Z0-9]{16}"
-        },
-        {
-            "name": "HELLO_MESSAGE",
-            "displayName": "Hello message",
-            "value": "Halo!!"
         }
     ]
 }
